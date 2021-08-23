@@ -75,32 +75,8 @@ class AccountsView(APIView):
 
 
 class FollowView(APIView):
-	def post(self, request):
-
-		if not request.data.get('id'):
-			return Response('Enter the user id.', status.HTTP_400_BAD_REQUEST)
-
-		user_id = request.data.get('id')
-		user = get_object_or_404(CustomUser, id=user_id)
-		follower = get_object_or_404(Profile, author=request.user)
-		followed_to = get_object_or_404(Profile, author=user)
-		print(follower, followed_to)
-		follower.followings.add(followed_to.author)
-		followed_to.followers.add(follower.author)
-		return Response(f'You followed to {followed_to}.')
+	pass
 
 
 class UnFollowView(APIView):
-	def post(self, request):
-
-		if not request.data.get('id'):
-			return Response('Enter the user id.', status.HTTP_400_BAD_REQUEST)
-
-		user_id = request.data.get('id')
-		user = get_object_or_404(CustomUser, id=user_id)
-		follower = get_object_or_404(Profile, author=request.user)
-		followed_to = get_object_or_404(Profile, author=user)
-		print(follower, followed_to)
-		follower.followings.remove(followed_to.author)
-		followed_to.followers.remove(follower.author)
-		return Response(f'You unfollowed from {followed_to}.')
+	pass
